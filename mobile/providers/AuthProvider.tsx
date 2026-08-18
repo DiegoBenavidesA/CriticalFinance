@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import { router } from 'expo-router';
+import { AxiosError } from 'axios';
+import { api, setAuthToken } from '@/lib/api';
 
 type AuthContextType = {
   token: string | null;
@@ -13,19 +15,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
 
   const signIn = async (email: string, password: string) => {
-    // TODO: integrar tu endpoint real /auth/login (Nest) y guardar JWT:
-    // const res = await api.post('/auth/login', { email, password });
-    // setToken(res.data.token);
-    // Por ahora, mock:
-    if (email && password) {
-      setToken('mock-token');
+    try {
+      const res = await api.post('/auth/login', { email, password });
+      const accessToken: string = res.data.access_token;
+      setAuthToken(accessToken);
+      setToken(accessToken);
       router.replace('/(tabs)'); // al loguear, redirige a tabs
-    } else {
-      throw new Error('Credenciales inválidas');
+    } catch (e) {
+      const status = (e as AxiosError).response?.status;
+      throw new Error(status === 401 ? 'Credenciales inválidas' : 'No se pudo conectar al servidor');
     }
   };
 
   const signOut = () => {
+    setAuthToken(null);
     setToken(null);
     router.replace('/(auth)/login');
   };

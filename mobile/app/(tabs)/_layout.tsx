@@ -1,10 +1,14 @@
 import React from 'react';
-import { Tabs } from 'expo-router';
+import { Tabs, Redirect } from 'expo-router';
 import { Feather } from '@expo/vector-icons';
 import AppHeader from '@/components/AppHeader';   // ⬅️ header reusable
 import { colors } from '@/theme';
+import { useAuth } from '@/providers/AuthProvider';
 
 export default function TabsLayout() {
+  const { token } = useAuth();
+  if (!token) return <Redirect href="/(auth)/login" />;
+
   return (
     <Tabs
       screenOptions={{
@@ -25,7 +29,7 @@ export default function TabsLayout() {
       />
 
       <Tabs.Screen
-        name="account"
+        name="cuenta"
         options={{
           title: 'Cuenta',
           tabBarIcon: ({ color, size }) => <Feather name="menu" color={color} size={size} />,

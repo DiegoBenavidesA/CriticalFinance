@@ -3,15 +3,12 @@ import {
   View, Text, ActivityIndicator, RefreshControl,
   FlatList, StyleSheet, Pressable
 } from 'react-native';
-import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 
 import { colors } from '@/theme';
 import { fmtCLP, fmtFecha } from '@/utils/format';
-import AppHeader from '@/components/AppHeader';
-
-const API_URL = 'http://10.0.2.2:3000/transactions';
+import { api } from '@/lib/api';
 
 type Category = { id: string; name: string; color?: string | null } | null;
 type Tx = {
@@ -41,7 +38,8 @@ export default function Movimientos() {
 
   const { data, isLoading, isRefetching, error, refetch } = useQuery<Tx[]>({
     queryKey: ['transactions', { take: 50 }],
-    queryFn: async () => (await axios.get(API_URL, { params: { take: 50 } })).data as Tx[],
+    queryFn: async () =>
+      (await api.get('/transactions', { params: { take: 50 } })).data.items as Tx[],
     staleTime: 30_000,
     refetchOnMount: 'always',
   });
@@ -85,9 +83,6 @@ export default function Movimientos() {
       }
       ListHeaderComponent={
         <>
-          {/* ✅ ÚNICO header */}
-          <AppHeader title="CriticalFinance" showChips />
-
           {/* KPIs */}
           <View style={s.header}>
             <View style={s.kpi}>

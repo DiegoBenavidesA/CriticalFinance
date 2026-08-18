@@ -12,10 +12,24 @@ export class UsersController {
     return this.prisma.user.findUnique({
       where: { id: userId },
       select: {
-        id: true, name: true, email: true, rut: true, phone: true,
-        accounts: { orderBy: { createdAt: 'asc' }, select: {
-          id: true, currency: true, balanceCents: true, createdAt: true,
-        }},
+        id: true,
+        name: true,
+        email: true,
+        rut: true,
+        phone: true,
+        accounts: {
+          orderBy: { createdAt: 'asc' },
+          select: {
+            id: true,
+            currency: true,
+            balanceCents: true,
+            createdAt: true,
+            bank: true,
+            accountType: true,
+            accountNumber: true,
+            provider: true,
+          },
+        },
       },
     });
   }

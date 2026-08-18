@@ -13,7 +13,8 @@ export default function RootLayout() {
     <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <Slot /> {/* aquí se renderizan (auth) y (tabs) */}
+          {/* aquí se renderizan (auth) y (tabs) */}
+          <Slot />
         </AuthProvider>
       </QueryClientProvider>
       <StatusBar style="auto" />

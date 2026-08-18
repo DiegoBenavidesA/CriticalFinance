@@ -1,13 +1,10 @@
 import React, { useMemo } from 'react';
 import { SafeAreaView, View, Text, FlatList, StyleSheet } from 'react-native';
-import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
 import { colors } from '@/theme';
 import { fmtCLP } from '@/utils/format';
-
-// Emulador Android => 10.0.2.2 | Teléfono físico => IP de tu PC
-const API_URL = 'http://10.0.2.2:3000/transactions';
+import { api } from '@/lib/api';
 
 type Category = { id: string; name: string; color?: string | null } | null;
 type Tx = {
@@ -22,7 +19,8 @@ type Tx = {
 export default function HomeScreen() {
   const { data } = useQuery<Tx[]>({
     queryKey: ['transactions', { take: 100 }],
-    queryFn: async () => (await axios.get(API_URL, { params: { take: 100 } })).data,
+    queryFn: async () =>
+      (await api.get('/transactions', { params: { take: 100 } })).data.items,
     staleTime: 30_000,
   });
 
@@ -34,7 +32,7 @@ export default function HomeScreen() {
     let bal = 0;
     let gasto = 0;
 
-    (data ?? []).forEach((t) => {
+    (Array.isArray(data) ? data : []).forEach((t) => {
       bal += t.valueCents;
       const when = new Date(t.bookedAt).getTime();
       if (when >= from.getTime() && t.valueCents < 0) gasto += Math.abs(t.valueCents);

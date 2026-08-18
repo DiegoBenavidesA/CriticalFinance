@@ -4,7 +4,7 @@ import { useAuth } from '../../providers/AuthProvider';
 
 export default function Login() {
   const { signIn } = useAuth();
-  const [email, setEmail] = useState('doc@example.com');
+  const [email, setEmail] = useState('demo1@bank.cl');
   const [password, setPassword] = useState('123456');
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);

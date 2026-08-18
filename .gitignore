@@ -6,6 +6,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Config local de Claude Code (no compartir)
+.claude/settings.local.json
+
 # Logs temporales del sistema
 *.log
 npm-debug.log*

@@ -9,6 +9,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { TransactionsModule } from './transactions/transactions.module';
 import { UsersModule } from './users/users.module';
+import { FintocModule } from './fintoc/fintoc.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { UsersModule } from './users/users.module';
     AuthModule,           // <-- añade autenticación JWT
     TransactionsModule,   // <-- tus endpoints de movimientos
     UsersModule,
+    FintocModule,         // <-- conexión de cuentas vía Fintoc Link (sandbox)
   ],
   controllers: [AppController],
   providers: [AppService],
