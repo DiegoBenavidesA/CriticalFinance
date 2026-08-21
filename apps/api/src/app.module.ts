@@ -12,8 +12,5 @@ import { McpModule } from './mcp/mcp.module';
   controllers: [
     AppHttpController,
   ],
-  providers: [
-    AppService,
-  ],
 })
 export class AppModule {}
