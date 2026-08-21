@@ -1,7 +1,11 @@
 {
   "name": "critical-finance",
   "private": true,
-  "scripts": { },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "typecheck": "turbo lint"
+  },
   "devDependencies": {
     "turbo": "^2.10.11"
   },
