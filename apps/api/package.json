@@ -18,6 +18,7 @@
     "@nestjs/microservices": "^11.2.1",
     "@nestjs/platform-express": "^11.0.1",
     "@rekog/mcp-nest": "^2.0.2",
+    "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
     "postgres": "^3.4.9",
     "reflect-metadata": "^0.2.2",
