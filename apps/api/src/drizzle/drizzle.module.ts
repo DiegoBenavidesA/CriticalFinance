@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
-import { DRIZZLE_PG_CLIENT, drizzleProvider } from "./drizzle.provider";
+import { drizzleProvider } from "./drizzle.provider";
+import { DRIZZLE_PG_CLIENT } from "./drizzle.tokens";
 
 @Module({
   exports: [

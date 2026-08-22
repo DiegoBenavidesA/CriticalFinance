@@ -3,8 +3,7 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import { settleAsync } from 'src/_utils/settle';
 import { EnvVariables } from 'src/config';
-
-export const DRIZZLE_PG_CLIENT = Symbol('DRIZZLE_PG_CLIENT');
+import { DRIZZLE_PG_CLIENT } from './drizzle.tokens';
 
 export const drizzleProvider = [
   {
