@@ -10,6 +10,6 @@ function validateDotenv(config: Record<string, unknown>): EnvironmentVariables {
 };
 
 export function loadEnvironmentVariables(): EnvironmentVariables {
-  dotenv.config({ path: ".env" });
+  dotenv.config({ path: ".env", quiet: true });
   return validateDotenv(process.env);
 }
