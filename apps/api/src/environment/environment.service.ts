@@ -7,6 +7,10 @@ export class EnvironmentService implements OnModuleInit {
   private variables: EnvironmentVariables;
 
   onModuleInit() {
+    this.load();
+  }
+
+  load(): void {
     this.variables = loadEnvironmentVariables();
   }
 
