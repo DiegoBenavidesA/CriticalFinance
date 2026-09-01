@@ -6,3 +6,4 @@ export * from './account.table';
 export * from './transaction.table';
 export * from './objective.table';
 export * from './transaction-tag.table';
+export * from './objective-tag.table';
