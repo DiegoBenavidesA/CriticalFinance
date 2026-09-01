@@ -50,6 +50,13 @@
       "when": 1788303343971,
       "tag": "0006_create_objective_table",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1788303371865,
+      "tag": "0007_create_transaction_tag_table",
+      "breakpoints": true
     }
   ]
 }
