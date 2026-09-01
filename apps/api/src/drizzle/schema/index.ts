@@ -4,3 +4,4 @@ export * from './tag.table';
 export * from './provider-connection.table';
 export * from './account.table';
 export * from './transaction.table';
+export * from './objective.table';

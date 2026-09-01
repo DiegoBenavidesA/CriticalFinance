@@ -43,6 +43,13 @@
       "when": 1788303333108,
       "tag": "0005_create_transaction_table",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1788303343971,
+      "tag": "0006_create_objective_table",
+      "breakpoints": true
     }
   ]
 }
