@@ -1,2 +1,1 @@
-// stub — no tables yet.
-export const schemaPlaceholder = {};
+export * from './user.table';
