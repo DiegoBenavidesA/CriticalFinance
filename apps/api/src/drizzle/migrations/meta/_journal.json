@@ -36,6 +36,13 @@
       "when": 1788303313631,
       "tag": "0004_create_account_table",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1788303333108,
+      "tag": "0005_create_transaction_table",
+      "breakpoints": true
     }
   ]
 }
