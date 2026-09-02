@@ -17,6 +17,9 @@ export const providerConnection = pgTable(
       .notNull()
       .references(() => provider.id),
     metadata: jsonb('metadata')
+      // NOTE: this type is just a placeholder, the idea is that in the future
+      // we should have a type that is a union of all the metadata types of the
+      // implemented providers
       .$type<{ link_token?: string; holder_id?: string; link_id?: string }>()
       .notNull()
       .default({}),
