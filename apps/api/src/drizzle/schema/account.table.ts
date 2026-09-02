@@ -13,7 +13,9 @@ export const account = pgTable(
     userId: uuid('user_id')
       .notNull()
       .references(() => user.id, { onDelete: 'cascade' }),
-    providerConnectionId: uuid('provider_connection_id').references(() => providerConnection.id, { onDelete: 'set null' }),
+    providerConnectionId: uuid('provider_connection_id')
+      .notNull()
+      .references(() => providerConnection.id, { onDelete: 'restrict' }),
     type: accountTypeEnum('type').notNull(),
     number: varchar('number', { length: 64 }).notNull(),
     holderName: varchar('holder_name', { length: 120 }).notNull(),

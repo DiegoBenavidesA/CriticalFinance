@@ -64,6 +64,13 @@
       "when": 1788303394348,
       "tag": "0008_create_objective_tag_table",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1788309612577,
+      "tag": "0009_make_provider_connection_id_not_null",
+      "breakpoints": true
     }
   ]
 }
